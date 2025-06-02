@@ -1,0 +1,81 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "platformer-level-1.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Background.tmx": {
+            "scale": 0.76,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 360.5263157894737,
+                "y": 83.5526315789474
+            }
+        },
+        "Background.tmx#BasicBackground": {
+            "scaleInDock": 1
+        },
+        "C:/Users/acrmi/Documents/CMPM120/Pathfinder/assets/tiny-town-tileset.tmx": {
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 337,
+                "y": 199.5
+            }
+        },
+        "C:/Users/acrmi/Documents/CMPM120/Pathfinder/assets/tiny-town-tileset.tmx#kenney-tiny-town": {
+            "scaleInDock": 1
+        },
+        "platformer-level-1.tmx": {
+            "expandedObjectLayers": [
+                4
+            ],
+            "scale": 0.75,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 720,
+                "y": 179.33333333333331
+            }
+        },
+        "platformer-level-1.tmx#BasicBackground": {
+            "scaleInDock": 1
+        },
+        "platformer-level-1.tmx#Characters": {
+            "scaleInDock": 1
+        },
+        "platformer-level-1.tmx#KennyBasicPlat": {
+            "scaleInDock": 1
+        }
+    },
+    "last.exportedFilePath": "C:/Users/acrmi/Documents/CMPM120/MyPlatformer/assets",
+    "last.imagePath": "C:/Users/acrmi/Documents/CMPM120/MyPlatformer/assets/Tilemaps",
+    "map.height": 10,
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 24,
+    "map.tileWidth": 24,
+    "openFiles": [
+        "Background.tmx",
+        "platformer-level-1.tmx"
+    ],
+    "project": "Background.tiled-project",
+    "recentFiles": [
+        "Background.tmx",
+        "platformer-level-1.tmx",
+        "C:/Users/acrmi/Documents/CMPM120/Pathfinder/assets/tiny-town-tileset.tmx"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.tileSize": {
+        "height": 24,
+        "width": 24
+    }
+}
