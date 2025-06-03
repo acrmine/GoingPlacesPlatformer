@@ -5,7 +5,7 @@ class Player extends Phaser.Physics.Arcade.Sprite
         super(scene, x, y, texture, frame);
         
         this.ACCELERATION = 400;
-        this.MAXSPEED_X = 500;
+        this.MAXSPEED_X = 300;
         this.TURN_MULTIPLIER = 3;
         this.DRAG = 800;    // DRAG < ACCELERATION = icy slide
         this.JUMP_VELOCITY = -450;
@@ -162,7 +162,7 @@ class Player extends Phaser.Physics.Arcade.Sprite
 
     win()
     {
-        Util.playerScore = this.score;
+        LevelBase.playerScore = this.score;
         my.vfx.firework.x = this.x;
         my.vfx.firework.y = this.y;
         my.vfx.firework.start();

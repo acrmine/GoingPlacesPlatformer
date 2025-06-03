@@ -1,6 +1,6 @@
-class Platformer extends Phaser.Scene {
+class FirstLevel extends LevelBase {
     constructor() {
-        super("platformerScene");
+        super("firstLevel");
     }
 
     init() {
@@ -28,7 +28,7 @@ class Platformer extends Phaser.Scene {
         this.tileset = this.map.addTilesetImage("KennyBasicPlat", "tilemap_tiles");
 
         // Create a layer
-        this.bg_1 = Util.createBackgroundImage(this, "background_basic", 2);
+        this.bg_1 = this.createBGLayer("background_basic", 2);
         // groundLayer must be named as such for player object to use it
         this.groundLayer = this.map.createLayer("groundLayer", this.tileset, 0, 0);
         this.overlapLayer = this.map.createLayer("overlap1", this.tileset, 0, 0).setDepth(1);
@@ -43,7 +43,7 @@ class Platformer extends Phaser.Scene {
 
 
         // Make the layers collidable
-        Util.createLayerCollision(this.map);
+        this.createLayerCollision(this.map);
 
         // Find coins in the "Objects" layer in Phaser
         // Look for them by finding objects with the name "coin"
@@ -142,6 +142,6 @@ class Platformer extends Phaser.Scene {
         my.sprite.player.update();
 
         // background movement
-        Util.moveBackground(this.bg_1, this.cameras.main, 0.1);
+        this.scrollBGLayer(this.bg_1, this.cameras.main, 0.1);
     }
 }
