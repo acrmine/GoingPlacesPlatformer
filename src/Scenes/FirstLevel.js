@@ -27,103 +27,23 @@ class FirstLevel extends LevelBase {
         // Second parameter: key for the tilesheet (from this.load.image in Load.js)
         this.tileset = this.map.addTilesetImage("KennyBasicPlat", "tilemap_tiles");
 
-        // Create a layer
         this.bg_1 = this.createBGLayer("background_basic", 2);
         // groundLayer must be named as such for player object to use it
         this.groundLayer = this.map.createLayer("groundLayer", this.tileset, 0, 0);
-        this.overlapLayer = this.map.createLayer("overlap1", this.tileset, 0, 0).setDepth(1);
+        this.overlap1 = this.map.createLayer("overlap1", this.tileset, 0, 0).setDepth(1);
         this.overlap2 = this.map.createLayer("overlap2", this.tileset, 0, 0).setDepth(3);
-        this.loadedLayers = [this.groundLayer, this.overlapLayer, this.overlap2];
-
-        this.playerLayer = this.map.getObjectLayer("playerSpawn");
-        this.playerSpawn = {
-            x: this.playerLayer.objects[0].x,
-            y: this.playerLayer.objects[0].y
-        };
-
-
-        // Make the layers collidable
+        this.loadedLayers = [this.groundLayer, this.overlap1, this.overlap2];
+        // Make the layers collidable, need this.loadedLayers (array with all layer objects in it)
         this.createLayerCollision(this.map);
 
-        // Find coins in the "Objects" layer in Phaser
-        // Look for them by finding objects with the name "coin"
-        // Assign the coin texture from the tilemap_sheet sprite sheet
-        // Phaser docs:
-        // https://newdocs.phaser.io/docs/3.80.0/focus/Phaser.Tilemaps.Tilemap-createFromObjects
-
-        this.coins = this.map.createFromObjects("Interactables", {
-            name: "coin",
-            key: "tilemap_sheet",
-            frame: 151
-        });
-
-        this.deathZones = this.map.createFromObjects("Death_Boxes", {
-            name: "death",
-        });
-
-        this.winZone = this.map.createFromObjects("Interactables", {
-            name: "win",
-        })
-        
-
-        // Since createFromObjects returns an array of regular Sprites, we need to convert 
-        // them into Arcade Physics sprites (STATIC_BODY, so they don't move) 
-        this.physics.world.enable(this.coins, Phaser.Physics.Arcade.STATIC_BODY);
-        this.physics.world.enable(this.deathZones, Phaser.Physics.Arcade.STATIC_BODY);
-        this.physics.world.enable(this.winZone, Phaser.Physics.Arcade.STATIC_BODY);
-
-        // Create a Phaser group out of the array of objects
-        // This will be used for collision detection below.
-        this.coinGroup = this.add.group(this.coins);
-        for(let child of this.coinGroup.getChildren())
-            child.anims.play('coinspin', true);
-        this.deathBoxGroup = this.add.group(this.deathZones);
-        for(let child of this.deathBoxGroup.getChildren())
-            child.visible = false;
-        this.winGroup = this.add.group(this.winZone);
-        for(let child of this.winGroup.getChildren())
-            child.visible = false;
-
-        // set up player avatar
+        this.playerSpawn = this.getPlayerSpawn(this.map, "playerSpawn");
         my.sprite.player = new Player(this, this.playerSpawn.x, this.playerSpawn.y, "platformer_characters", "tile_0000.png");
 
-        // Handle collision detection with coins
-        this.physics.add.overlap(my.sprite.player, this.coinGroup, (obj1, obj2) => 
-        { 
-            my.vfx.coin.x = obj2.x;
-            my.vfx.coin.y = obj2.y;
-            my.vfx.coin.start();
-            this.coinSound.play();
-            obj1.score += 50;
-            obj2.destroy(); // remove coin on overlap
-        });
-
-        // Handle collision with death boxes
-        this.physics.add.overlap(my.sprite.player, this.deathBoxGroup, (obj1, obj2) => {
-            obj1.die("falling");
-        });
-
-        // Handle collision with win boxes
-        this.physics.add.overlap(my.sprite.player, this.winGroup, (obj1, obj2) => {
-            obj1.win();
-        });
-        
-        this.rKey = this.input.keyboard.addKey('R');
-
-        // debug key listener (assigned to D key)
-        this.input.keyboard.on('keydown-D', () => {
-            this.physics.world.drawDebug = this.physics.world.drawDebug ? false : true
-            this.physics.world.debugGraphic.clear()
-        }, this);
-
-        my.vfx.coin = this.add.particles(0, 0, "kenny-particles", {
-            frame: ['magic_05.png'],
-            scale: {start: 0.03, end: 0.3},
-            alpha: {start: 1, end: 0.1},
-            lifespan: 200,
-            duration: 1,
-        });
-        my.vfx.coin.stop();
+        this.createLevelVFX();
+        this.coinGroup = this.spawnCoins(this.map, "Interactables", my.sprite.player);
+        this.deathBoxGroup = this.spawnDeathZones(this.map, "Death_Boxes", my.sprite.player);
+        this.winBoxGroup = this.spawnWinZones(this.map, "Interactables", my.sprite.player, "winScene");
+        this.springGroup = this.spawnSprings(this.map, "Interactables", my.sprite.player);
         
         this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
         this.cameras.main.startFollow(my.sprite.player, true, 0.25, 0.25); // (target, [,roundPixels][,lerpX][,lerpY])
@@ -131,6 +51,13 @@ class FirstLevel extends LevelBase {
         this.cameras.main.setZoom(this.SCALE);
 
         this.animatedTiles.init(this.map);
+
+        this.rKey = this.input.keyboard.addKey('R');
+        // debug key listener (assigned to D key)
+        this.input.keyboard.on('keydown-D', () => {
+            this.physics.world.drawDebug = this.physics.world.drawDebug ? false : true
+            this.physics.world.debugGraphic.clear()
+        }, this);
     }
 
     update() 

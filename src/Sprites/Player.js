@@ -34,16 +34,18 @@ class Player extends Phaser.Physics.Arcade.Sprite
             lifespan: 350,
             gravityY: -200,
             alpha: {start: 1, end: 0.1}, 
+            frequency: 30,
+            angle: {start: 0, end: 180, random: true},
         });
         my.vfx.walking.stop();
 
         my.vfx.firework = this.scene.add.particles(0, 0, "kenny-particles", {
             frame: 'star_06.png',
-            scale: { min: 0.4, max: 1.2},
+            scale: { min: 0.04, max: 0.12},
             velocityX: { min: -100, max: 100 },
             velocityY: { min: -100, max: 100 },
             maxAliveParticles: 30,
-            lifespan: 350,
+            lifespan: 1000,
             duration: 1000, 
         });
         my.vfx.firework.stop();
@@ -83,6 +85,10 @@ class Player extends Phaser.Physics.Arcade.Sprite
 
     update()
     {
+        if(!this.body.blocked.down)
+        {
+            my.vfx.walking.stop();
+        }
         if(cursors.left.isDown) {
             this.setAccelerationX((this.body.velocity.x > 0) ? (-this.ACCELERATION * this.TURN_MULTIPLIER) : -this.ACCELERATION);
             this.resetFlip();
@@ -129,7 +135,6 @@ class Player extends Phaser.Physics.Arcade.Sprite
             my.vfx.jump.y = this.y-20;
             my.vfx.jump.start();
             this.body.setVelocityY(this.JUMP_VELOCITY);
-            my.vfx.walking.stop();
         }
         if(this.body.velocity.y != 0)
             this.inTheAir = true;
@@ -160,7 +165,7 @@ class Player extends Phaser.Physics.Arcade.Sprite
         }
     }
 
-    win()
+    win(nextScene)
     {
         LevelBase.playerScore = this.score;
         my.vfx.firework.x = this.x;

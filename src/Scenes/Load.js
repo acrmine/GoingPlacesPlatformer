@@ -42,7 +42,9 @@ class Load extends Phaser.Scene {
         this.load.multiatlas("kenny-particles", "kenny-particles.json");
     }
 
-    create() {
+    create() 
+    {
+    /* ANIMATIONS */
         this.anims.create({
             key: 'walk',
             frames: this.anims.generateFrameNames('platformer_characters', {
@@ -82,6 +84,16 @@ class Load extends Phaser.Scene {
             ],
             frameRate: 2,
             repeat: -1
+        });
+
+        this.anims.create({
+            key: 'springBounce',
+            defaultTextureKey: "tilemap_sheet",
+            frames: [
+                { frame: 108 },
+                { frame: 107 }
+            ],
+            frameRate: 10,
         });
 
          // ...and pass to the next Scene
