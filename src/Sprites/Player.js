@@ -6,6 +6,7 @@ class Player extends Phaser.Physics.Arcade.Sprite
         
         this.ACCELERATION = 400;
         this.MAXSPEED_X = 300;
+        this.MAXFALLSPEED = 500;
         this.TURN_MULTIPLIER = 3;
         this.DRAG = 800;    // DRAG < ACCELERATION = icy slide
         this.JUMP_VELOCITY = -450;
@@ -67,6 +68,7 @@ class Player extends Phaser.Physics.Arcade.Sprite
 
         scene.physics.world.enable(this);
         this.body.setMaxVelocityX(this.MAXSPEED_X);
+        this.body.setMaxVelocityY(this.MAXFALLSPEED);
         this.setFlip(true, false);
         this.setDepth(2);
         this.setCollideWorldBounds(true);

@@ -44,12 +44,12 @@ class LevelBase extends Phaser.Scene
         }
     }
 
-    createBGLayer(texture, scale)
+    createBGLayer(texture, imageWidth, imageHeight, scale)
     {
         let textureObject = this.textures.get(texture);
         let width = textureObject.getSourceImage().width;
         let height = textureObject.getSourceImage().height;
-        let background = this.add.tileSprite(width/2, height/2, game.config.width, game.config.height, texture);
+        let background = this.add.tileSprite(width/2, height/2, imageWidth, imageHeight, texture);
         background.setOrigin(0, 0);
         background.setScrollFactor(0);
         background.setScale(scale);

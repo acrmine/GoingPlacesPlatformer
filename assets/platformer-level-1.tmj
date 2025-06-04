@@ -245,17 +245,6 @@
                  "y":180
                 }, 
                 {
-                 "height":54,
-                 "id":27,
-                 "name":"win",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":36,
-                 "x":2124,
-                 "y":144
-                }, 
-                {
                  "gid":108,
                  "height":18,
                  "id":28,
@@ -303,7 +292,7 @@
          "name":"playerSpawn",
          "objects":[
                 {
-                 "gid":2147483853,
+                 "gid":2147483829,
                  "height":24,
                  "id":1,
                  "name":"player",
@@ -342,7 +331,7 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":8,
+ "nextlayerid":9,
  "nextobjectid":31,
  "orientation":"orthogonal",
  "renderorder":"right-down",
@@ -865,21 +854,8 @@
          "tilewidth":18
         }, 
         {
-         "columns":8,
-         "firstgid":181,
-         "image":"..\/..\/MyPlatformer\/assets\/Tilemaps\/tilemap-backgrounds_packed.png",
-         "imageheight":72,
-         "imagewidth":192,
-         "margin":0,
-         "name":"BasicBackground",
-         "spacing":0,
-         "tilecount":24,
-         "tileheight":24,
-         "tilewidth":24
-        }, 
-        {
          "columns":9,
-         "firstgid":205,
+         "firstgid":181,
          "image":"..\/..\/MyPlatformer\/assets\/Tilemaps\/tilemap-characters_packed.png",
          "imageheight":72,
          "imagewidth":216,
