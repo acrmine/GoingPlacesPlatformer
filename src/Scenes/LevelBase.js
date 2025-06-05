@@ -61,9 +61,9 @@ class LevelBase extends Phaser.Scene
         bg.tilePositionX = camera.scrollX * rate;
     }
 
-    createStaticBGImage(texture, scale)
+    createStaticBGImage(texture, x, y, scale)
     {
-        this.add.image(0, 0, texture).setOrigin(0,0).setScale(scale);
+        this.add.image(x, y, texture).setOrigin(0,0).setScale(scale);
     }
 
     getPlayerSpawn(map, objectLayer)

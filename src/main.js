@@ -31,6 +31,7 @@ let config = {
     },
     width: 1440,
     height: 720,
+    backgroundColor: 0xffffff,
     scene: [Load, FirstLevel, WinScreen]
 }
 

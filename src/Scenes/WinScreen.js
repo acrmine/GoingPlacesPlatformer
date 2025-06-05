@@ -7,8 +7,8 @@ class WinScreen extends LevelBase {
 
     create()
     {
-        this.createStaticBGImage("background_basic", 3);
-        this.createStaticBGImage("win_screen", 4);
+        this.createStaticBGImage("background_basic", 0, 0, 3);
+        this.createStaticBGImage("win_screen", 0, 0, 4);
 
         this.deathMessage = this.add.bitmapText(game.config.width/5.5, game.config.height * 0.25, "pixelFont", "YOU\nWIN!!", 100);
         this.deathMessage.setOrigin(0.5).setCenterAlign();

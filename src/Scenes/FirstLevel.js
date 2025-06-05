@@ -29,7 +29,9 @@ class FirstLevel extends LevelBase {
         this.tileset = this.map.addTilesetImage("KennyBasicPlat", "tilemap_tiles");
         this.outTileset = this.outerMap.addTilesetImage("MonochromeBlack", "outside_tilemap");
 
-        this.bg_1 = this.createBGLayer("background_basic", this.map.widthInPixels, this.map.heightInPixels, 2);
+        //this.bg_1 = this.createBGLayer("background_basic", this.map.widthInPixels, this.map.heightInPixels, 2);
+        this.bg_1 = this.createStaticBGImage("backgroundB", 0, -72, 3);
+        this.cover1 = this.createStaticBGImage("coverRectangle", 0, 360, 3);
         this.groundLayer = this.map.createLayer("groundLayer", this.tileset, 0, 0);
         this.overlap1 = this.map.createLayer("overlap1", this.tileset, 0, 0).setDepth(1);
         this.overlap2 = this.map.createLayer("overlap2", this.tileset, 0, 0).setDepth(3);
@@ -73,6 +75,6 @@ class FirstLevel extends LevelBase {
         my.sprite.player.update();
 
         // background movement
-        this.scrollBGLayer(this.bg_1, this.cameras.main, 0.1);
+        //this.scrollBGLayer(this.bg_1, this.cameras.main, 0.1);
     }
 }
