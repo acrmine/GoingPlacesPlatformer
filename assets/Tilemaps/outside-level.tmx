@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="200" height="100" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="3">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="200" height="100" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="5">
  <editorsettings>
-  <export target="../../../GoingPlacesPlatformer/assets/outside-level.tmj" format="json"/>
+  <export target="../outside-level.tmj" format="json"/>
  </editorsettings>
  <tileset firstgid="1" name="MonochromeBlack" tilewidth="16" tileheight="16" tilecount="400" columns="20">
-  <image source="../../../GoingPlacesPlatformer/assets/Tilemaps/black_monochrome_tilemap.png" width="320" height="320"/>
+  <image source="black_monochrome_tilemap.png" width="320" height="320"/>
   <tile id="11">
    <properties>
     <property name="collides" type="bool" value="true"/>
@@ -247,5 +247,7 @@
  </layer>
  <objectgroup id="3" name="Notes">
   <object id="1" name="FirstLevelBounds" x="0" y="0" width="2160" height="360"/>
+  <object id="3" name="CoverRectangle1" x="0" y="360" width="2160" height="432"/>
+  <object id="4" name="CoverRectangle2" x="2160" y="0" width="2160" height="432"/>
  </objectgroup>
 </map>

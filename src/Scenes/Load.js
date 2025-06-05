@@ -17,6 +17,7 @@ class Load extends Phaser.Scene {
         this.load.image("background_basic", "Background.png");
         this.load.image("background_green", "GreenBackground.png");
         this.load.image("backgroundB", "BackgroundBigger.png");
+        this.load.image("backgroundM", "BackgroundMedium.png");
         this.load.image("coverRectangle", "WhiteBlock.png");
         this.load.image("win_screen", "WinScreenImage.png");
         this.load.bitmapFont("pixelFont", "pixel_font_0.png", "pixel_font.fnt");

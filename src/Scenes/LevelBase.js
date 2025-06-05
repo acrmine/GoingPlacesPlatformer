@@ -63,7 +63,8 @@ class LevelBase extends Phaser.Scene
 
     createStaticBGImage(texture, x, y, scale)
     {
-        this.add.image(x, y, texture).setOrigin(0,0).setScale(scale);
+        let image = this.add.image(x, y, texture).setOrigin(0,0).setScale(scale);
+        return image;
     }
 
     getPlayerSpawn(map, objectLayer)

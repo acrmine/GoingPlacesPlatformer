@@ -31,7 +31,8 @@ class FirstLevel extends LevelBase {
 
         //this.bg_1 = this.createBGLayer("background_basic", this.map.widthInPixels, this.map.heightInPixels, 2);
         this.bg_1 = this.createStaticBGImage("backgroundB", 0, -72, 3);
-        this.cover1 = this.createStaticBGImage("coverRectangle", 0, 360, 3);
+        this.cover1 = this.createStaticBGImage("coverRectangle", 0, 360, 3).setDepth(3);
+        this.cover2 = this.createStaticBGImage("coverRectangle", 2160, 0, 3);
         this.groundLayer = this.map.createLayer("groundLayer", this.tileset, 0, 0);
         this.overlap1 = this.map.createLayer("overlap1", this.tileset, 0, 0).setDepth(1);
         this.overlap2 = this.map.createLayer("overlap2", this.tileset, 0, 0).setDepth(3);

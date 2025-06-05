@@ -115,18 +115,6 @@
                 {
                  "gid":152,
                  "height":18,
-                 "id":13,
-                 "name":"coin",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":18,
-                 "x":342,
-                 "y":216
-                }, 
-                {
-                 "gid":152,
-                 "height":18,
                  "id":14,
                  "name":"coin",
                  "rotation":0,
@@ -145,19 +133,7 @@
                  "type":"",
                  "visible":true,
                  "width":18,
-                 "x":360,
-                 "y":324
-                }, 
-                {
-                 "gid":152,
-                 "height":18,
-                 "id":16,
-                 "name":"coin",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":18,
-                 "x":324,
+                 "x":342,
                  "y":324
                 }, 
                 {
@@ -171,18 +147,6 @@
                  "width":18,
                  "x":504,
                  "y":270
-                }, 
-                {
-                 "gid":152,
-                 "height":18,
-                 "id":18,
-                 "name":"coin",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":18,
-                 "x":576,
-                 "y":180
                 }, 
                 {
                  "gid":152,
@@ -230,18 +194,6 @@
                  "visible":true,
                  "width":18,
                  "x":720,
-                 "y":180
-                }, 
-                {
-                 "gid":152,
-                 "height":18,
-                 "id":23,
-                 "name":"coin",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":18,
-                 "x":756,
                  "y":180
                 }, 
                 {
