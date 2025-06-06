@@ -29,10 +29,10 @@ class FirstLevel extends LevelBase {
         this.tileset = this.map.addTilesetImage("KennyBasicPlat", "tilemap_tiles");
         this.outTileset = this.outerMap.addTilesetImage("MonochromeBlack", "outside_tilemap");
 
-        //this.bg_1 = this.createBGLayer("background_basic", this.map.widthInPixels, this.map.heightInPixels, 2);
-        this.bg_1 = this.createStaticBGImage("backgroundB", 0, -72, 3);
+        this.bg_1 = this.createStaticBGImage("backgroundM", 0, 0, 3);
+        // this.bg_1 = this.createStaticBGImage("backgroundB", 0, -72, 3);
         this.cover1 = this.createStaticBGImage("coverRectangle", 0, 360, 3).setDepth(3);
-        this.cover2 = this.createStaticBGImage("coverRectangle", 2160, 0, 3);
+        // this.cover2 = this.createStaticBGImage("coverRectangle", 2160, 0, 3);
         this.groundLayer = this.map.createLayer("groundLayer", this.tileset, 0, 0);
         this.overlap1 = this.map.createLayer("overlap1", this.tileset, 0, 0).setDepth(1);
         this.overlap2 = this.map.createLayer("overlap2", this.tileset, 0, 0).setDepth(3);
@@ -52,10 +52,14 @@ class FirstLevel extends LevelBase {
         this.winBoxGroup = this.spawnWinZones(this.map, "Interactables", my.sprite.player, "winScene");
         this.springGroup = this.spawnSprings(this.map, "Interactables", my.sprite.player);
         
-        this.cameras.main.setBounds(0, 0, this.outerMap.widthInPixels, this.outerMap.heightInPixels);
+        this.cameras.main.setBounds(0, 0, this.outerMap.widthInPixels, this.map.heightInPixels);
         this.cameras.main.startFollow(my.sprite.player, true, 0.25, 0.25); // (target, [,roundPixels][,lerpX][,lerpY])
         this.cameras.main.setDeadzone(50, 50);
         this.cameras.main.setZoom(this.SCALE);
+        this.camTransEvent = this.spawnEventCollider(this.outerMap, "EventColliders", "CameraTransition", my.sprite.player, () =>
+        {
+            this.cameras.main.setBounds(0, 0, this.outerMap.widthInPixels, this.outerMap.heightInPixels);
+        });
 
         this.animatedTiles.init(this.map);
 
@@ -74,8 +78,5 @@ class FirstLevel extends LevelBase {
         }
         // player movement
         my.sprite.player.update();
-
-        // background movement
-        //this.scrollBGLayer(this.bg_1, this.cameras.main, 0.1);
     }
 }

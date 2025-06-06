@@ -102,7 +102,6 @@ class LevelBase extends Phaser.Scene
             my.vfx.coin.y = obj2.y;
             my.vfx.coin.start();
             this.coinSound.play();
-            obj1.score += 50;
             obj2.destroy(); // remove coin on overlap
         });
         return coinGroup;
@@ -156,5 +155,20 @@ class LevelBase extends Phaser.Scene
                 obj1.setVelocityY(-obj2.getData("bounce"));
         });
         return springGroup;
+    }
+
+    spawnEventCollider(map, objectLayer, colliderName, playerObject, triggerEvent)
+    {
+        let eventZones = map.createFromObjects(objectLayer, {
+            name: colliderName,
+        });
+        this.physics.world.enable(eventZones, Phaser.Physics.Arcade.STATIC_BODY);
+        let eventGroup = this.add.group(eventZones);
+        for(let child of eventGroup.getChildren())
+            child.visible = false;
+        this.physics.add.overlap(playerObject, eventGroup, (obj1, obj2) => {
+            triggerEvent();
+        });
+        return eventGroup;
     }
 }

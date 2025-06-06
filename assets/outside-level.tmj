@@ -128,6 +128,39 @@
                  "width":2160,
                  "x":0,
                  "y":0
+                }, 
+                {
+                 "height":360,
+                 "id":5,
+                 "name":"CoverRectangle",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":2160,
+                 "x":0,
+                 "y":360
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":4,
+         "name":"EventColliders",
+         "objects":[
+                {
+                 "height":40,
+                 "id":6,
+                 "name":"CameraTransition",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":1040,
+                 "x":2160,
+                 "y":256
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -135,8 +168,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":4,
- "nextobjectid":3,
+ "nextlayerid":5,
+ "nextobjectid":7,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
