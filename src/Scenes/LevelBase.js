@@ -101,6 +101,7 @@ class LevelBase extends Phaser.Scene
             my.vfx.coin.x = obj2.x;
             my.vfx.coin.y = obj2.y;
             my.vfx.coin.start();
+            obj1.score += 50;
             this.coinSound.play();
             obj2.destroy(); // remove coin on overlap
         });

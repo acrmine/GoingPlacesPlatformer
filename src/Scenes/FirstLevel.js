@@ -49,7 +49,9 @@ class FirstLevel extends LevelBase {
         this.createLevelVFX();
         this.coinGroup = this.spawnCoins(this.map, "Interactables", my.sprite.player);
         this.deathBoxGroup = this.spawnDeathZones(this.map, "Interactables", my.sprite.player);
+        this.outsideDeath = this.spawnDeathZones(this.outerMap, "Interactables", my.sprite.player);
         this.springGroup = this.spawnSprings(this.map, "Interactables", my.sprite.player);
+        this.winZones = this.spawnWinZones(this.outerMap, "Interactables", my.sprite.player, "winScene");
         
         this.cameras.main.setBounds(0, 0, this.outerMap.widthInPixels, this.map.heightInPixels);
         this.cameras.main.startFollow(my.sprite.player, true, 0.25, 0.25); // (target, [,roundPixels][,lerpX][,lerpY])

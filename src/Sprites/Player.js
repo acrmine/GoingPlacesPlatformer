@@ -43,7 +43,7 @@ class Player extends Phaser.Physics.Arcade.Sprite
 
         my.vfx.firework = this.scene.add.particles(0, 0, "kenny-particles", {
             frame: 'star_06.png',
-            scale: { min: 0.04, max: 0.12},
+            scale: { min: 0.4, max: 1.2},
             velocityX: { min: -100, max: 100 },
             velocityY: { min: -100, max: 100 },
             maxAliveParticles: 30,

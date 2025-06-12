@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="120" height="20" tilewidth="18" tileheight="18" infinite="0" nextlayerid="9" nextobjectid="33">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="120" height="20" tilewidth="18" tileheight="18" infinite="0" nextlayerid="10" nextobjectid="36">
  <editorsettings>
   <export target="../platformer-level-1.tmj" format="json"/>
  </editorsettings>
@@ -356,6 +356,9 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup id="9" name="Enemies">
+  <object id="35" name="stdWalker" gid="2147483848" x="342" y="234" width="24" height="24"/>
+ </objectgroup>
  <objectgroup id="7" name="Interactables">
   <object id="12" name="coin" gid="152" x="306" y="216" width="18" height="18"/>
   <object id="14" name="coin" gid="152" x="378" y="216" width="18" height="18"/>

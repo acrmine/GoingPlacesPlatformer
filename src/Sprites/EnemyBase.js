@@ -16,5 +16,8 @@ class Player extends Phaser.Physics.Arcade.Sprite
             scene.physics.add.collider(this, layer);
     }
 
-    
+    update()
+    {
+        
+    }
 }
