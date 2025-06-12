@@ -31,6 +31,9 @@ let config = {
     },
     width: 1440,
     height: 720,
+    scale: {
+        mode: Phaser.Scale.FIT,
+    },
     backgroundColor: 0xffffff,
     scene: [Load, FirstLevel, WinScreen]
 }

@@ -5,14 +5,15 @@ class Player extends Phaser.Physics.Arcade.Sprite
         super(scene, x, y, texture, frame);
         
         this.ACCELERATION = 400;
-        this.MAXSPEED_X = 300;
-        this.MAXFALLSPEED = 500;
+        this.MAXSPEED_X = 200;
+        this.MAXFALLSPEED = 800;
         this.TURN_MULTIPLIER = 3;
         this.DRAG = 800;    // DRAG < ACCELERATION = icy slide
         this.JUMP_VELOCITY = -450;
         this.PARTICLE_VELOCITY = 50;
 
         this.inTheAir = false;
+        this.useWalkParticles = false;
         this.jumpTimer = 0;
         this.walkTimer = 0;
         this.score = 0;
@@ -64,6 +65,7 @@ class Player extends Phaser.Physics.Arcade.Sprite
         my.vfx.jump.stop();
 
         cursors = this.scene.input.keyboard.createCursorKeys();
+        this.zKey = scene.input.keyboard.addKey('Z');
         scene.add.existing(this);
 
         scene.physics.world.enable(this);
@@ -91,31 +93,47 @@ class Player extends Phaser.Physics.Arcade.Sprite
         {
             my.vfx.walking.stop();
         }
+        if(this.zKey.isDown)
+        {
+            this.body.setMaxVelocityX(this.MAXSPEED_X * 2);
+            this.useWalkParticles = true;
+        }
+        else
+        {
+            this.body.setMaxVelocityX(this.MAXSPEED_X);
+            my.vfx.walking.stop();
+            this.useWalkParticles = false;
+        }
         if(cursors.left.isDown) {
             this.setAccelerationX((this.body.velocity.x > 0) ? (-this.ACCELERATION * this.TURN_MULTIPLIER) : -this.ACCELERATION);
             this.resetFlip();
             this.anims.play('walk', true);
-            my.vfx.walking.startFollow(this, this.displayWidth/2-10, this.displayHeight/2, false);
-            my.vfx.walking.setParticleSpeed(this.PARTICLE_VELOCITY, 0);
-
-            // Only play smoke effect if touching the ground
-            if (this.body.blocked.down) {
-                my.vfx.walking.start();
-                this.playWalkSfx();
+            if(this.useWalkParticles)
+            {
+                my.vfx.walking.startFollow(this, this.displayWidth/2-10, this.displayHeight/2, false);
+                my.vfx.walking.setParticleSpeed(this.PARTICLE_VELOCITY, 0);
+                if (this.body.blocked.down) 
+                    my.vfx.walking.start();
             }
+            // Only play smoke effect if touching the ground
+            if (this.body.blocked.down) 
+                this.playWalkSfx();
 
         } else if(cursors.right.isDown) {
             this.setAccelerationX((this.body.velocity.x < 0) ? (this.ACCELERATION * this.TURN_MULTIPLIER) : this.ACCELERATION);
             this.setFlip(true, false);
             this.anims.play('walk', true);
-            my.vfx.walking.startFollow(this, this.displayWidth/2-14, this.displayHeight/2, false);
-            my.vfx.walking.setParticleSpeed(this.PARTICLE_VELOCITY, 0);
+            if(this.useWalkParticles)
+            {
+                my.vfx.walking.startFollow(this, this.displayWidth/2-14, this.displayHeight/2, false);
+                my.vfx.walking.setParticleSpeed(this.PARTICLE_VELOCITY, 0);
+                if (this.body.blocked.down) 
+                    my.vfx.walking.start();
+            }
 
             // Only play smoke effect if touching the ground
-            if (this.body.blocked.down) {
-                my.vfx.walking.start();
+            if (this.body.blocked.down) 
                 this.playWalkSfx();
-            }
 
         } else {
             // Set acceleration to 0 and have DRAG take over
@@ -175,7 +193,7 @@ class Player extends Phaser.Physics.Arcade.Sprite
         my.vfx.firework.start();
         this.winTimer = this.scene.time.addEvent({
             delay: 1000,
-            callback: () => { this.scene.scene.start("winScene"); },
+            callback: () => { this.scene.scene.start(nextScene); },
             callbackScope: this,
             loop: false,
         })

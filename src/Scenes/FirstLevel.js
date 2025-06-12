@@ -34,7 +34,7 @@ class FirstLevel extends LevelBase {
         this.cover1 = this.createStaticBGImage("coverRectangle", 0, 360, 3).setDepth(3);
         // this.cover2 = this.createStaticBGImage("coverRectangle", 2160, 0, 3);
         this.groundLayer = this.map.createLayer("groundLayer", this.tileset, 0, 0);
-        this.overlap1 = this.map.createLayer("overlap1", this.tileset, 0, 0).setDepth(1);
+        this.overlap1 = this.map.createLayer("overlap1", this.tileset, 0, 0);
         this.overlap2 = this.map.createLayer("overlap2", this.tileset, 0, 0).setDepth(3);
         this.createLayerCollision(this.map);
 
@@ -48,14 +48,13 @@ class FirstLevel extends LevelBase {
 
         this.createLevelVFX();
         this.coinGroup = this.spawnCoins(this.map, "Interactables", my.sprite.player);
-        this.deathBoxGroup = this.spawnDeathZones(this.map, "Death_Boxes", my.sprite.player);
-        this.winBoxGroup = this.spawnWinZones(this.map, "Interactables", my.sprite.player, "winScene");
+        this.deathBoxGroup = this.spawnDeathZones(this.map, "Interactables", my.sprite.player);
         this.springGroup = this.spawnSprings(this.map, "Interactables", my.sprite.player);
         
         this.cameras.main.setBounds(0, 0, this.outerMap.widthInPixels, this.map.heightInPixels);
         this.cameras.main.startFollow(my.sprite.player, true, 0.25, 0.25); // (target, [,roundPixels][,lerpX][,lerpY])
         this.cameras.main.setDeadzone(50, 50);
-        this.cameras.main.setZoom(this.SCALE);
+        this.cameras.main.setZoom(this.SCALE * 0.75);
         this.camTransEvent = this.spawnEventCollider(this.outerMap, "EventColliders", "CameraTransition", my.sprite.player, () =>
         {
             this.cameras.main.setBounds(0, 0, this.outerMap.widthInPixels, this.outerMap.heightInPixels);
@@ -64,11 +63,6 @@ class FirstLevel extends LevelBase {
         this.animatedTiles.init(this.map);
 
         this.rKey = this.input.keyboard.addKey('R');
-        // debug key listener (assigned to D key)
-        this.input.keyboard.on('keydown-D', () => {
-            this.physics.world.drawDebug = this.physics.world.drawDebug ? false : true
-            this.physics.world.debugGraphic.clear()
-        }, this);
     }
 
     update() 
